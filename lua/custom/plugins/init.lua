@@ -5,4 +5,9 @@
 
 ---@module 'lazy'
 ---@type LazySpec
-return {}
+require('custom.remote_sync')
+require('custom.pi_clangd')
+
+return {
+	require("custom.plugins.lemminx"),
+}
