@@ -7,6 +7,8 @@
 ---@type LazySpec
 require('custom.remote_sync')
 require('custom.pi_clangd')
+require('custom.difftool')
+require('custom.undotree')
 
 return {
 	require("custom.plugins.lemminx"),
