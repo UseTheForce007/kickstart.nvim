@@ -11,5 +11,6 @@ require('custom.difftool')
 require('custom.undotree')
 
 return {
+	require('custom.plugins.conform'),
 	require("custom.plugins.lemminx"),
 }
