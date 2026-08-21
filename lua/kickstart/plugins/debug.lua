@@ -111,6 +111,29 @@ return {
       },
     }
 
+    local function enable_dapui_wrapping()
+      for _, winid in ipairs(vim.api.nvim_list_wins()) do
+        local bufnr = vim.api.nvim_win_get_buf(winid)
+        local filetype = vim.bo[bufnr].filetype
+
+        if filetype == 'dapui_scopes' or filetype == 'dapui_stacks' or filetype == 'dapui_watches' or filetype == 'dap-repl' or filetype == 'dapui_console' then
+          vim.wo[winid].wrap = true
+          vim.wo[winid].linebreak = true
+          vim.wo[winid].breakindent = true
+        end
+      end
+    end
+
+    vim.api.nvim_create_autocmd({ 'FileType', 'BufWinEnter' }, {
+      pattern = { 'dapui_scopes', 'dapui_stacks', 'dapui_watches', 'dap-repl', 'dapui_console' },
+      callback = enable_dapui_wrapping,
+    })
+
+    dap.listeners.after.event_initialized['dapui_wrap'] = function()
+      dapui.open()
+      vim.schedule(enable_dapui_wrapping)
+    end
+
     -- Change breakpoint icons
     -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
     -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
@@ -123,7 +146,6 @@ return {
     --   vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
     -- end
 
-    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 

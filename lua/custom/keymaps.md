@@ -14,6 +14,9 @@ This file inventories the keymaps defined in this Neovim config, including direc
 | Mode | Key | Action | Label | Scope | Source |
 | --- | --- | --- | --- | --- | --- |
 | n | `<Esc>` | `:nohlsearch` | Clear search highlight | Global | [init.lua](../init.lua#L172) |
+| v | `J` | `:m '>+1<CR>gv=gv` | Move selected lines down | Visual selection | [keymaps.lua](keymaps.lua#L3) |
+| v | `K` | `:m '<-2<CR>gv=gv` | Move selected lines up | Visual selection | [keymaps.lua](keymaps.lua#L4) |
+| n | `<leader>fr` | `:%s/\\<<C-r><C-w>\\>//g<Left><Left>` | Find and replace word under cursor | Global | [keymaps.lua](keymaps.lua#L5) |
 | n | `<leader>q` | `vim.diagnostic.setloclist` | Open diagnostic quickfix list | Global | [init.lua](../init.lua#L190) |
 | t | `<Esc><Esc>` | `<C-\\><C-n>` | Exit terminal mode | Terminal | [init.lua](../init.lua#L198) |
 | n | `<C-h>` | `<C-w><C-h>` | Move focus to the left window | Global | [init.lua](../init.lua#L210) |
@@ -113,13 +116,24 @@ This file inventories the keymaps defined in this Neovim config, including direc
 | n, i | `<a-a>` | `opencode_send` | Send selection to opencode | Snacks picker input binding | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L19) |
 | n, x | `<C-a>` | `opencode.ask()` | Ask opencode | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L36) |
 | n, x | `<C-x>` | `opencode.select()` | Select opencode | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L37) |
-| n, t | `<C-.>` | `opencode.toggle()` | Toggle opencode | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L38) |
-| n, x | `go` | `opencode.operator()` | Add range to opencode | Expr mapping | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L40) |
-| n | `goo` | `opencode.operator() .. '_'` | Add line to opencode | Expr mapping | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L41) |
-| n | `<S-C-u>` | `opencode.command('session.half.page.up')` | Scroll opencode up | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L43) |
-| n | `<S-C-d>` | `opencode.command('session.half.page.down')` | Scroll opencode down | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L44) |
+| n | `<leader>oa` | `opencode.ask()` | Ask opencode | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L38) |
+| n | `<leader>ox` | `opencode.select()` | Select opencode | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L39) |
+| n | `<leader>o` | `opencode.toggle()` | Toggle opencode | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L40) |
+| n, x | `go` | `opencode.operator()` | Add range to opencode | Expr mapping | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L42) |
+| n | `goo` | `opencode.operator() .. '_'` | Add line to opencode | Expr mapping | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L43) |
+| n | `<S-C-u>` | `opencode.command('session.half.page.up')` | Scroll opencode up | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L45) |
+| n | `<S-C-d>` | `opencode.command('session.half.page.down')` | Scroll opencode down | Global plugin key | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L46) |
 | n | `+` | `<C-a>` | Increment under cursor | Global remap | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L47) |
 | n | `-` | `<C-x>` | Decrement under cursor | Global remap | [lua/custom/plugins/opencode.lua](../lua/custom/plugins/opencode.lua#L48) |
+
+## GitHub (Octo)
+
+| Mode | Key | Action | Label | Scope | Source |
+| --- | --- | --- | --- | --- | --- |
+| n | `<leader>gi` | `Octo issue list` | List issues | Global plugin key | [lua/custom/plugins/octo.lua](../lua/custom/plugins/octo.lua#L18) |
+| n | `<leader>gp` | `Octo pr list` | List pull requests | Global plugin key | [lua/custom/plugins/octo.lua](../lua/custom/plugins/octo.lua#L19) |
+| n | `<leader>gpc` | `Octo pr create` | Create pull request | Global plugin key | [lua/custom/plugins/octo.lua](../lua/custom/plugins/octo.lua#L20) |
+| n | `<leader>gn` | `Octo notification stream` | View notifications | Global plugin key | [lua/custom/plugins/octo.lua](../lua/custom/plugins/octo.lua#L21) |
 
 ## Typeit
 

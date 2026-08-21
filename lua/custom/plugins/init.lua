@@ -9,8 +9,10 @@ require('custom.remote_sync')
 require('custom.pi_clangd')
 require('custom.difftool')
 require('custom.undotree')
+require('custom.keymaps')
 
 return {
 	require('custom.plugins.conform'),
 	require("custom.plugins.lemminx"),
+	require('custom.plugins.julia'),
 }

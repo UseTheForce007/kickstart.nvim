@@ -35,10 +35,9 @@ return {
     -- Recommended/example keymaps
     vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
     vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Select opencode…" })
-    vim.keymap.set({ "n", "t" }, "<C-.>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
-
-    -- Leader-based toggle (safer in many terminals). `<leader>o` was free in config.
-    vim.keymap.set({ "n", "t" }, "<leader>o", function() require("opencode").toggle() end,                      { desc = "Toggle opencode" })
+    vim.keymap.set("n", "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
+    vim.keymap.set("n", "<leader>ox", function() require("opencode").select() end,                          { desc = "Select opencode" })
+    vim.keymap.set("n", "<leader>o", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
 
     vim.keymap.set({ "n", "x" }, "go",  function() return require("opencode").operator("@this ") end,        { desc = "Add range to opencode", expr = true })
     vim.keymap.set("n",          "goo", function() return require("opencode").operator("@this ") .. "_" end, { desc = "Add line to opencode", expr = true })
@@ -46,7 +45,7 @@ return {
     vim.keymap.set("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "Scroll opencode up" })
     vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "Scroll opencode down" })
 
-    -- You may want these if you use the opinionated `<C-a>` and `<C-x>` keymaps above — otherwise consider `<leader>o…` (and remove terminal mode from the `toggle` keymap)
+    -- You may want these if you use the opinionated `<C-a>` and `<C-x>` keymaps above.
     vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
     vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
   end,

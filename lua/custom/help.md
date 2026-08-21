@@ -80,6 +80,12 @@ Common commands inside the Neo-tree window:
 
 This setup includes helpers for syncing Pi-project files and refreshing clangd so host Neovim can autocomplete Pi headers and libraries.
 
+### clangd quick fixes
+
+To see the fixes clangd is offering for the current diagnostic or selection, put the cursor on the issue and press <leader>gra.
+
+If you want the surrounding problems first, open the diagnostic list with <leader>q.
+
 Important commands and keybinds:
 
 - :PiSync : sync the current pi-project tree to the Raspberry Pi
@@ -93,3 +99,30 @@ Recommended workflow:
 1. Run :PiClangdSync to refresh the cached Pi headers.
 2. Open a C or C++ buffer that belongs to your Pi project.
 3. Use :LspRestart clangd if autocomplete does not refresh immediately.
+
+## Debugging with DAP
+
+This setup uses `nvim-dap` with `dap-ui` for debugging.
+
+### Basic controls
+
+- <F5> : start or continue the current debug session
+- <F1> : step into
+- <F2> : step over
+- <F3> : step out
+- <leader>b : toggle a breakpoint
+- <leader>B : set a conditional breakpoint
+- <F7> : toggle the DAP UI
+
+### Running a session
+
+1. Open the file you want to debug.
+2. Put breakpoints where you need them.
+3. Press <F5>.
+4. For C, C++, or Rust, enter the path to the executable when prompted.
+
+### Notes
+
+- The debugger UI opens automatically when a session starts and closes when it ends.
+- If the debug adapter is missing, install `codelldb` or `delve` with Mason.
+- Use <F7> if you want to bring the debug UI back without restarting the session.
